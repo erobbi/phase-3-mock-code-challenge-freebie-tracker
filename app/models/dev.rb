@@ -8,13 +8,12 @@ class Dev < ActiveRecord::Base
         self.freebies.any? do |k|
             k.item_name == item_name
         end        
+        #also could use .exists
     end
 
-    def give_away(dev_id, item)
-        object = Freebie.find_by item_name: item
-        object.update(dev_id: dev_id)
+    def give_away(dev, object)
+        object.update(dev: dev)
         #updates freebie owner to dev that was inputted
-        #not quite working
     end
 
 end
